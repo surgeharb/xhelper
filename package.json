@@ -2,8 +2,10 @@
   "name": "xhelper",
   "version": "1.0.0",
   "description": "Helper library for JavaScript",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/surgeharb/xhelper/issues"
   },
-  "homepage": "https://github.com/surgeharb/xhelper#readme"
+  "homepage": "https://github.com/surgeharb/xhelper#readme",
+  "dependencies": {
+    "typescript": "^2.4.1"
+  }
 }
