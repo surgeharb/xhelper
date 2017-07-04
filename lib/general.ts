@@ -1,6 +1,5 @@
-declare function require(name: string);
-const Q = require('q');
-const fs = require('fs');
+import { Q } from "q";
+import { fs } from "fs";
 
 /**
  * Checks if the array contains a certain object
@@ -46,8 +45,8 @@ function containsObject(array: object[], object: object, field: string) {
  * @param {string} string
  * @return {boolean}
  */
-export function toBoolean(string: string) {
-  if (string === "true") {
+export function toBoolean(string) {
+  if (string === "true" || string == true) {
     return true;
   } else {
     return false;
