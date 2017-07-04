@@ -8,7 +8,7 @@ import { fs } from "fs";
  * @param {boolean} [printToConsole] - true to print in the console
  * @returns
  */
-function saveLog(file: string, text: string, printToConsole: boolean) {
+export function saveLog(file: string, text: string, printToConsole: boolean) {
   let file_path = './logs/' + file + '.log';
   let datetime = '[' + new Date().toUTCString() + '] ';
   let output = datetime + " " + text + '\n';

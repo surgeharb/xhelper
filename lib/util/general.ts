@@ -1,5 +1,4 @@
 import { Q } from "q";
-import { fs } from "fs";
 
 /**
  * Checks if the array contains a certain object

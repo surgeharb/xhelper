@@ -6,7 +6,7 @@
  * @param {number} seconds - Seconds
  * @returns
  */
-function getLastMidnight(hours: number, minutes: number, seconds: number) {
+export function getLastMidnight(hours: number, minutes: number, seconds: number) {
   let timestamp = new Date().getTime();
   let time = timestamp - ((hours * 60 * 60 * 1000) + (minutes * 60 * 1000) + (seconds * 1000));
   return time;
@@ -21,7 +21,7 @@ function getLastMidnight(hours: number, minutes: number, seconds: number) {
  * @param {number} seconds- Seconds
  * @returns
  */
-function getCurrentMonthFirstDay(day: number, hours: number, minutes: number, seconds: number) {
+export function getCurrentMonthFirstDay(day: number, hours: number, minutes: number, seconds: number) {
   let days = day - 1;
   let timestamp = Date.now();
   let time = timestamp - ((days * 24 * 60 * 60 * 1000) + (hours * 60 * 60 * 1000) + (minutes * 60 * 1000) + (seconds * 1000));
@@ -34,7 +34,7 @@ function getCurrentMonthFirstDay(day: number, hours: number, minutes: number, se
  * @param {number} seconds - Number of seconds
  * @returns
  */
-function ceilToMinute(seconds: number) {
+export function ceilToMinute(seconds: number) {
   let minutes = seconds / 60;
   return Math.ceil(minutes);
 }
