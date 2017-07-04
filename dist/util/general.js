@@ -38,6 +38,7 @@ function containsObject(array, object, field) {
     }
     return deferred.promise;
 }
+exports.containsObject = containsObject;
 /**
  * Converts the string to boolean value
  *

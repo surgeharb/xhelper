@@ -1,4 +1,14 @@
 /**
+ * Checks if the array contains a certain object
+ *
+ * @param {array} array - Array where to search
+ * @param {object} object - Object to be checked
+ * @param {string} [field] - Field to be compared
+ *
+ * @return {promise}
+ */
+export declare function containsObject(array: object[], object: object, field: string): any;
+/**
  * Converts the string to boolean value
  *
  * @param {string} string

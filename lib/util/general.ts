@@ -9,7 +9,7 @@ import { Q } from "q";
  *
  * @return {promise}
  */
-function containsObject(array: object[], object: object, field: string) {
+export function containsObject(array: object[], object: object, field: string) {
   let deferred = Q.defer();
 
   if (!array || array.length == 0) {
