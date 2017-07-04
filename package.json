@@ -22,5 +22,8 @@
   "dependencies": {
     "q": "^1.5.0",
     "typescript": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.7"
   }
 }
