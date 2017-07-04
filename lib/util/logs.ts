@@ -1,4 +1,4 @@
-import { fs } from "fs";
+import * as fs from "fs";
 
 /**
  * Prints a log in a specific log file
