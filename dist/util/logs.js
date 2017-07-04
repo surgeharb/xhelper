@@ -1,6 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
+/**
+ * Prints a log in a specific log file
+ *
+ * @param {string} file - file name
+ * @param {string} text - test to be logged
+ * @param {boolean} [printToConsole] - true to print in the console
+ * @returns
+ */
 function saveLog(file, text, printToConsole) {
     var file_path = './logs/' + file + '.log';
     var datetime = '[' + new Date().toUTCString() + '] ';

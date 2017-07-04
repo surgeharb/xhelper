@@ -1,11 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Gets the last midnight timestamp according to the user date
+ *
+ * @param {number} hours - Hours
+ * @param {number} minutes - Minutes
+ * @param {number} seconds - Seconds
+ * @returns
+ */
 function getLastMidnight(hours, minutes, seconds) {
     var timestamp = new Date().getTime();
     var time = timestamp - ((hours * 60 * 60 * 1000) + (minutes * 60 * 1000) + (seconds * 1000));
     return time;
 }
 exports.getLastMidnight = getLastMidnight;
+/**
+ * Gets the last midnight of the first day of the month's timestamp according to the user date
+ *
+ * @param {number} day - Day
+ * @param {number} hours - Hours
+ * @param {number} minutes - Minutes
+ * @param {number} seconds- Seconds
+ * @returns
+ */
 function getCurrentMonthFirstDay(day, hours, minutes, seconds) {
     var days = day - 1;
     var timestamp = Date.now();
@@ -13,6 +30,12 @@ function getCurrentMonthFirstDay(day, hours, minutes, seconds) {
     return time;
 }
 exports.getCurrentMonthFirstDay = getCurrentMonthFirstDay;
+/**
+ * Round number of seconds to the nearest greater number of minutes
+ *
+ * @param {number} seconds - Number of seconds
+ * @returns
+ */
 function ceilToMinute(seconds) {
     var minutes = seconds / 60;
     return Math.ceil(minutes);
