@@ -1,11 +1,11 @@
 # xhelper
 
-## Installattion
+### Installattion
 ```javascript
 npm install xhelper --save
 ```
 
-## Usage
+### Usage
 ```javascript
 const xhelper = require('xhelper');
 ```
