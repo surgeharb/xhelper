@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var q_1 = require("q");
+var Q = require("q");
 /**
  * Checks if the array contains a certain object
  *
@@ -11,7 +11,7 @@ var q_1 = require("q");
  * @return {promise}
  */
 function containsObject(array, object, field) {
-    var deferred = q_1.Q.defer();
+    var deferred = Q.defer();
     if (!array || array.length == 0) {
         deferred.resolve(false);
         return deferred.promise;
