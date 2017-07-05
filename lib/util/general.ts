@@ -44,7 +44,7 @@ export function containsObject(array: object[], object: object, field: string) {
  * @param {string} string
  * @return {boolean}
  */
-export function toBoolean(string) {
+export function toBoolean(string: string | boolean) {
   if (string === "true" || string == true) {
     return true;
   } else {

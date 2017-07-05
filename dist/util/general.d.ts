@@ -14,7 +14,7 @@ export declare function containsObject(array: object[], object: object, field: s
  * @param {string} string
  * @return {boolean}
  */
-export declare function toBoolean(string: any): boolean;
+export declare function toBoolean(string: string | boolean): boolean;
 /**
  * Checks if object is undefined
  *
