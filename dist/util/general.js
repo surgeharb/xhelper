@@ -43,12 +43,12 @@ exports.containsObject = containsObject;
  * Truncate the given number
  *
  * @param {number} number - Number to be truncated
- * @param {number} digits - Number of fractional digits after the integer
+ * @param {number} [digits] - Number of fractional digits after the integer
  * @return
  */
 function truncate(number, digits) {
-    if (digits === 0) {
-        return number;
+    if (!digits) {
+        return Math.trunc(number);
     }
     var temp = Math.pow(10, digits);
     return (Math.trunc(number * temp) / temp);
