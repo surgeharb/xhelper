@@ -9,6 +9,14 @@
  */
 export declare function containsObject(array: object[], object: object, field: string): any;
 /**
+ * Truncate the given number
+ *
+ * @param {number} number - Number to be truncated
+ * @param {number} digits - Number of fractional digits after the integer
+ * @return
+ */
+export declare function truncate(number: number, digits: number): number;
+/**
  * Converts the string to boolean value
  *
  * @param {string} string

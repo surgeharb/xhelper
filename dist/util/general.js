@@ -40,6 +40,21 @@ function containsObject(array, object, field) {
 }
 exports.containsObject = containsObject;
 /**
+ * Truncate the given number
+ *
+ * @param {number} number - Number to be truncated
+ * @param {number} digits - Number of fractional digits after the integer
+ * @return
+ */
+function truncate(number, digits) {
+    if (digits === 0) {
+        return number;
+    }
+    var temp = Math.pow(10, digits);
+    return (Math.trunc(number * temp) / temp);
+}
+exports.truncate = truncate;
+/**
  * Converts the string to boolean value
  *
  * @param {string} string

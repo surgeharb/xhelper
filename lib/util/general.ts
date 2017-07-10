@@ -39,6 +39,21 @@ export function containsObject(array: object[], object: object, field: string) {
 }
 
 /**
+ * Truncate the given number
+ *
+ * @param {number} number - Number to be truncated
+ * @param {number} digits - Number of fractional digits after the integer
+ * @return 
+ */
+export function truncate(number: number, digits: number) {
+  if (digits === 0) {
+    return number;
+  }
+  let temp = Math.pow(10, digits);
+  return (Math.trunc(number * temp) / temp);
+}
+
+/**
  * Converts the string to boolean value
  *
  * @param {string} string
