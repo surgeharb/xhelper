@@ -7,7 +7,7 @@
  *
  * @return {promise}
  */
-export declare function containsObject(array: object[], object: object, field: string): any;
+export declare function containsObject(array: object[], object: object, field?: string): any;
 /**
  * Truncate the given number
  *
@@ -16,6 +16,14 @@ export declare function containsObject(array: object[], object: object, field: s
  * @return
  */
 export declare function truncate(number: number, digits?: number): number;
+/**
+ * Remove spaces from the string
+ *
+ * @param {string} text - text to be unspaced
+ * @param {string} [occurence] - all | edges | first | last | beautify
+ * @return
+ */
+export declare function unspace(text: string, occurence?: string): string;
 /**
  * Converts the string to boolean value
  *

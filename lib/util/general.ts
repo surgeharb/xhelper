@@ -14,7 +14,7 @@ export function containsObject(array: object[], object: object, field?: string) 
   let deferred = Q.defer();
 
   if (!array || array.length == 0) {
-    deferred.resolve(false);
+    deferred.resolve({ "result": false });
     return deferred.promise;
   }
 

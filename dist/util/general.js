@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Q = require("q");
+var safe = require("safe-regex");
 /**
  * Checks if the array contains a certain object
  *
@@ -54,6 +55,45 @@ function truncate(number, digits) {
     return (Math.trunc(number * temp) / temp);
 }
 exports.truncate = truncate;
+/**
+ * Remove spaces from the string
+ *
+ * @param {string} text - text to be unspaced
+ * @param {string} [occurence] - all | edges | first | last | beautify
+ * @return
+ */
+function unspace(text, occurence) {
+    if (!occurence) {
+        occurence = 'all';
+    }
+    if (!safe(text)) {
+        return text;
+    }
+    var regex = {
+        'all': /\s/g,
+        'edges': /^\s*|\s*$/g,
+        'first': /^\s*/g,
+        'last': /\s*$/g,
+        'spaces': /\s+/g
+    };
+    switch (occurence) {
+        case 'all':
+            return text.replace(regex.all, "");
+        case 'edges':
+            return text.replace(regex.edges, "");
+        case 'first':
+            return text.replace(regex.first, "");
+        case 'last':
+            return text.replace(regex.last, "");
+        case 'beautify':
+            text = text.replace(regex.edges, "");
+            text = text.replace(regex.spaces, " ");
+            return text;
+        default:
+            return text.replace(regex.all, "");
+    }
+}
+exports.unspace = unspace;
 /**
  * Converts the string to boolean value
  *
