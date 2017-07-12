@@ -14,7 +14,7 @@ var safe = require("safe-regex");
 function containsObject(array, object, field) {
     var deferred = Q.defer();
     if (!array || array.length == 0) {
-        deferred.resolve(false);
+        deferred.resolve({ "result": false });
         return deferred.promise;
     }
     if (!field) {
