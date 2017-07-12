@@ -21,6 +21,7 @@
   "homepage": "https://github.com/surgeharb/xhelper#readme",
   "dependencies": {
     "q": "^1.5.0",
+    "safe-regex": "^1.1.0",
     "typescript": "^2.4.1"
   },
   "devDependencies": {

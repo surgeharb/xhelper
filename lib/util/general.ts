@@ -1,4 +1,5 @@
-import * as Q from "q";
+import * as Q from "q"
+import * as safe from "safe-regex"
 
 /**
  * Checks if the array contains a certain object
@@ -9,7 +10,7 @@ import * as Q from "q";
  *
  * @return {promise}
  */
-export function containsObject(array: object[], object: object, field: string) {
+export function containsObject(array: object[], object: object, field?: string) {
   let deferred = Q.defer();
 
   if (!array || array.length == 0) {
@@ -51,6 +52,53 @@ export function truncate(number: number, digits?: number) {
   }
   let temp = Math.pow(10, digits);
   return (Math.trunc(number * temp) / temp);
+}
+
+/**
+ * Remove spaces from the string
+ *
+ * @param {string} text - text to be unspaced
+ * @param {string} [occurence] - all | edges | first | last | beautify
+ * @return 
+ */
+export function unspace(text: string, occurence?: string) {
+  if (!occurence) {
+    occurence = 'all';
+  }
+
+  if (!safe(text)) {
+    return text;
+  }
+
+  let regex = {
+    'all': /\s/g,
+    'edges': /^\s*|\s*$/g,
+    'first': /^\s*/g,
+    'last': /\s*$/g,
+    'spaces': /\s+/g
+  }
+
+  switch (occurence) {
+    case 'all':
+      return text.replace(regex.all, "");
+
+    case 'edges':
+      return text.replace(regex.edges, "");
+
+    case 'first':
+      return text.replace(regex.first, "");
+      
+    case 'last':
+      return text.replace(regex.last, "");
+
+    case 'beautify':
+      text = text.replace(regex.edges, "");
+      text = text.replace(regex.spaces, " ");
+      return text;
+
+    default:
+      return text.replace(regex.all, "");
+  }
 }
 
 /**
