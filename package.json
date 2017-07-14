@@ -1,6 +1,6 @@
 {
   "name": "xhelper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Helper library for JavaScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,10 +21,10 @@
   "homepage": "https://github.com/surgeharb/xhelper#readme",
   "dependencies": {
     "q": "^1.5.0",
-    "safe-regex": "^1.1.0",
-    "typescript": "^2.4.1"
+    "safe-regex": "^1.1.0"
   },
   "devDependencies": {
-    "@types/node": "^8.0.7"
+    "@types/node": "^8.0.7",
+    "typescript": "^2.4.1"
   }
 }
