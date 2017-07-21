@@ -13,6 +13,9 @@ function saveLog(file, text, printToConsole) {
     var file_path = './logs/' + file + '.log';
     var datetime = '[' + new Date().toUTCString() + '] ';
     var output = datetime + " " + text + '\n';
+    if (!fs.existsSync('./logs')) {
+        fs.mkdirSync('./logs');
+    }
     fs.appendFile(file_path, output, function (err) {
         if (err)
             return console.log(err);

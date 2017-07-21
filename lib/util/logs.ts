@@ -12,6 +12,11 @@ export function saveLog(file: string, text: string, printToConsole: boolean) {
   let file_path = './logs/' + file + '.log';
   let datetime = '[' + new Date().toUTCString() + '] ';
   let output = datetime + " " + text + '\n';
+
+  if (!fs.existsSync('./logs')) {
+    fs.mkdirSync('./logs');
+  }
+
   fs.appendFile(file_path, output, err => {
     if (err) return console.log(err);
     if (printToConsole) console.log(text);
