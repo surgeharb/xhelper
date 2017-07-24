@@ -13,57 +13,24 @@ var safe = require("safe-regex");
 function containsObject(array, object, field) {
     var element = {};
     var result = false;
+    var condition = false;
     if (array && array.length > 0) {
-        if (!field) {
-            array.forEach(function (el, index) {
-                if (JSON.stringify(el) === JSON.stringify(object)) {
-                    result = true;
-                    element = el;
-                }
-                else if (index === array.length - 1) {
-                    result = false;
-                    element = {};
-                }
-            });
-        }
-        else {
-            array.forEach(function (el, index) {
-                if (el[field].toString() == object[field].toString()) {
-                    result = true;
-                    element = el;
-                }
-                else if (index === array.length - 1) {
-                    result = false;
-                    element = {};
-                }
-            });
-        }
-    }
-    if (array && array.length > 0) {
-        if (!field) {
-            array.forEach(function (el, index) {
-                if (JSON.stringify(el) === JSON.stringify(object)) {
-                    result = true;
-                    element = el;
-                }
-                else if (index === array.length - 1) {
-                    result = false;
-                    element = {};
-                }
-            });
-        }
-        else {
-            array.forEach(function (el, index) {
-                if (el[field].toString() == object[field].toString()) {
-                    result = true;
-                    element = el;
-                }
-                else if (index === array.length - 1) {
-                    result = false;
-                    element = {};
-                }
-            });
-        }
+        array.forEach(function (el, index) {
+            if (!field) {
+                condition = (JSON.stringify(el) === JSON.stringify(object));
+            }
+            else {
+                condition = (el[field].toString() == object[field].toString());
+            }
+            if (condition) {
+                result = true;
+                element = el;
+            }
+            else if (index === array.length - 1) {
+                result = false;
+                element = {};
+            }
+        });
     }
     return {
         "result": result,

@@ -13,53 +13,23 @@ export function containsObject(array: object[], object: object, field?: string) 
 
   let element: object = {};
   let result: boolean = false;
-
- if (array && array.length > 0) {
-    if (!field) {
-      array.forEach((el: object, index: number) => {
-        if (JSON.stringify(el) === JSON.stringify(object)) {
-          result = true;
-          element = el;
-        } else if (index === array.length - 1) {
-          result = false;
-          element = {};
-        }
-      })
-    } else {
-      array.forEach((el: object, index: number) => {
-        if (el[field].toString() == object[field].toString()) {
-          result = true;
-          element = el;
-        } else if (index === array.length - 1) {
-          result = false;
-          element = {};
-        }
-      })
-    } 
-  }
+  let condition: boolean = false;
 
   if (array && array.length > 0) {
-    if (!field) {
-      array.forEach((el: object, index: number) => {
-        if (JSON.stringify(el) === JSON.stringify(object)) {
-          result = true;
-          element = el;
-        } else if (index === array.length - 1) {
-          result = false;
-          element = {};
-        }
-      })
-    } else {
-      array.forEach((el: object, index: number) => {
-        if (el[field].toString() == object[field].toString()) {
-          result = true;
-          element = el;
-        } else if (index === array.length - 1) {
-          result = false;
-          element = {};
-        }
-      })
-    } 
+    array.forEach((el: object, index: number) => {
+      if (!field) {
+        condition = (JSON.stringify(el) === JSON.stringify(object))
+      } else {
+        condition = (el[field].toString() == object[field].toString())
+      }
+      if (condition) {
+        result = true;
+        element = el;
+      } else if (index === array.length - 1) {
+        result = false;
+        element = {};
+      }
+    })
   }
 
   return {
@@ -175,7 +145,7 @@ export function unspace(text: string, occurence?: string) {
 
     case 'first':
       return text.replace(regex.first, "");
-      
+
     case 'last':
       return text.replace(regex.last, "");
 
