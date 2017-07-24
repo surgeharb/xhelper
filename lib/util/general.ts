@@ -11,27 +11,60 @@ import * as safe from "safe-regex"
  */
 export function containsObject(array: object[], object: object, field?: string) {
 
-  let empty: object = {};
-  if (!array || array.length == 0) {
-    return { "result": false, "element": empty };
+  let element: object = {};
+  let result: boolean = false;
+
+ if (array && array.length > 0) {
+    if (!field) {
+      array.forEach((el: object, index: number) => {
+        if (JSON.stringify(el) === JSON.stringify(object)) {
+          result = true;
+          element = el;
+        } else if (index === array.length - 1) {
+          result = false;
+          element = {};
+        }
+      })
+    } else {
+      array.forEach((el: object, index: number) => {
+        if (el[field].toString() == object[field].toString()) {
+          result = true;
+          element = el;
+        } else if (index === array.length - 1) {
+          result = false;
+          element = {};
+        }
+      })
+    } 
   }
 
-  if (!field) {
-    array.forEach((el: object, index: number) => {
-      if (JSON.stringify(el) === JSON.stringify(object)) {
-        return { "result": true, "element": el };
-      } else if (index === array.length - 1) {
-        return { "result": false, "element": empty };
-      }
-    })
-  } else {
-    array.forEach((el: object, index: number) => {
-      if (el[field].toString() == object[field].toString()) {
-        return { "result": true, "element": el };
-      } else if (index === array.length - 1) {
-        return { "result": false, "element": empty };
-      }
-    })
+  if (array && array.length > 0) {
+    if (!field) {
+      array.forEach((el: object, index: number) => {
+        if (JSON.stringify(el) === JSON.stringify(object)) {
+          result = true;
+          element = el;
+        } else if (index === array.length - 1) {
+          result = false;
+          element = {};
+        }
+      })
+    } else {
+      array.forEach((el: object, index: number) => {
+        if (el[field].toString() == object[field].toString()) {
+          result = true;
+          element = el;
+        } else if (index === array.length - 1) {
+          result = false;
+          element = {};
+        }
+      })
+    } 
+  }
+
+  return {
+    "result": result,
+    "element": element
   }
 
 }

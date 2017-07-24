@@ -11,30 +11,64 @@ var safe = require("safe-regex");
  * @returns
  */
 function containsObject(array, object, field) {
-    var empty = {};
-    if (!array || array.length == 0) {
-        return { "result": false, "element": empty };
+    var element = {};
+    var result = false;
+    if (array && array.length > 0) {
+        if (!field) {
+            array.forEach(function (el, index) {
+                if (JSON.stringify(el) === JSON.stringify(object)) {
+                    result = true;
+                    element = el;
+                }
+                else if (index === array.length - 1) {
+                    result = false;
+                    element = {};
+                }
+            });
+        }
+        else {
+            array.forEach(function (el, index) {
+                if (el[field].toString() == object[field].toString()) {
+                    result = true;
+                    element = el;
+                }
+                else if (index === array.length - 1) {
+                    result = false;
+                    element = {};
+                }
+            });
+        }
     }
-    if (!field) {
-        array.forEach(function (el, index) {
-            if (JSON.stringify(el) === JSON.stringify(object)) {
-                return { "result": true, "element": el };
-            }
-            else if (index === array.length - 1) {
-                return { "result": false, "element": empty };
-            }
-        });
+    if (array && array.length > 0) {
+        if (!field) {
+            array.forEach(function (el, index) {
+                if (JSON.stringify(el) === JSON.stringify(object)) {
+                    result = true;
+                    element = el;
+                }
+                else if (index === array.length - 1) {
+                    result = false;
+                    element = {};
+                }
+            });
+        }
+        else {
+            array.forEach(function (el, index) {
+                if (el[field].toString() == object[field].toString()) {
+                    result = true;
+                    element = el;
+                }
+                else if (index === array.length - 1) {
+                    result = false;
+                    element = {};
+                }
+            });
+        }
     }
-    else {
-        array.forEach(function (el, index) {
-            if (el[field].toString() == object[field].toString()) {
-                return { "result": true, "element": el };
-            }
-            else if (index === array.length - 1) {
-                return { "result": false, "element": empty };
-            }
-        });
-    }
+    return {
+        "result": result,
+        "element": element
+    };
 }
 exports.containsObject = containsObject;
 /**

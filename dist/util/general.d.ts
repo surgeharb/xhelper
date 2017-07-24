@@ -10,7 +10,7 @@
 export declare function containsObject(array: object[], object: object, field?: string): {
     "result": boolean;
     "element": object;
-} | undefined;
+};
 /**
  * Escape Regex input
  *
