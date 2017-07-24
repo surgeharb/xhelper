@@ -1,4 +1,3 @@
-import * as Q from "q"
 import * as safe from "safe-regex"
 
 /**
