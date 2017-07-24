@@ -11,16 +11,17 @@ import * as safe from "safe-regex"
  */
 export function containsObject(array: object[], object: object, field?: string) {
 
+  let empty: object = {};
   if (!array || array.length == 0) {
-    return { "result": false, "element": {} };
+    return { "result": false, "element": empty };
   }
 
   if (!field) {
-    array.forEach((el, index) => {
+    array.forEach((el: object, index: number) => {
       if (JSON.stringify(el) === JSON.stringify(object)) {
         return { "result": true, "element": el };
       } else if (index === array.length - 1) {
-        return { "result": false, "element": {} };
+        return { "result": false, "element": empty };
       }
     })
   } else {
@@ -28,7 +29,7 @@ export function containsObject(array: object[], object: object, field?: string) 
       if (el[field].toString() == object[field].toString()) {
         return { "result": true, "element": el };
       } else if (index === array.length - 1) {
-        return { "result": false, "element": {} };
+        return { "result": false, "element": empty };
       }
     })
   }

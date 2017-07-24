@@ -1,6 +1,6 @@
 {
   "name": "xhelper",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Helper library for JavaScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

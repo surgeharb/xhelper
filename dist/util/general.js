@@ -11,8 +11,9 @@ var safe = require("safe-regex");
  * @returns
  */
 function containsObject(array, object, field) {
+    var empty = {};
     if (!array || array.length == 0) {
-        return { "result": false, "element": {} };
+        return { "result": false, "element": empty };
     }
     if (!field) {
         array.forEach(function (el, index) {
@@ -20,7 +21,7 @@ function containsObject(array, object, field) {
                 return { "result": true, "element": el };
             }
             else if (index === array.length - 1) {
-                return { "result": false, "element": {} };
+                return { "result": false, "element": empty };
             }
         });
     }
@@ -30,7 +31,7 @@ function containsObject(array, object, field) {
                 return { "result": true, "element": el };
             }
             else if (index === array.length - 1) {
-                return { "result": false, "element": {} };
+                return { "result": false, "element": empty };
             }
         });
     }
