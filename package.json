@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/surgeharb/xhelper#readme",
   "dependencies": {
-    "q": "^1.5.0",
     "safe-regex": "^1.1.0"
   },
   "devDependencies": {

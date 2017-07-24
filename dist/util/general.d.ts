@@ -7,7 +7,10 @@
  * @param {string} [field] - Field to be compared
  * @returns
  */
-export declare function containsObject(array: object[], object: object, field?: string): any;
+export declare function containsObject(array: object[], object: object, field?: string): {
+    "result": boolean;
+    "element": {};
+} | undefined;
 /**
  * Escape Regex input
  *

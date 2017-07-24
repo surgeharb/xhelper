@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Q = require("q");
 var safe = require("safe-regex");
 /**
  * Checks if the array contains a certain object
@@ -12,32 +11,29 @@ var safe = require("safe-regex");
  * @returns
  */
 function containsObject(array, object, field) {
-    var deferred = Q.defer();
     if (!array || array.length == 0) {
-        deferred.resolve({ "result": false });
-        return deferred.promise;
+        return { "result": false, "element": {} };
     }
     if (!field) {
         array.forEach(function (el, index) {
             if (JSON.stringify(el) === JSON.stringify(object)) {
-                deferred.resolve({ "result": true, "element": el });
+                return { "result": true, "element": el };
             }
             else if (index === array.length - 1) {
-                deferred.resolve({ "result": false });
+                return { "result": false, "element": {} };
             }
         });
     }
     else {
         array.forEach(function (el, index) {
             if (el[field].toString() == object[field].toString()) {
-                deferred.resolve({ "result": true, "element": el });
+                return { "result": true, "element": el };
             }
             else if (index === array.length - 1) {
-                deferred.resolve({ "result": false });
+                return { "result": false, "element": {} };
             }
         });
     }
-    return deferred.promise;
 }
 exports.containsObject = containsObject;
 /**
