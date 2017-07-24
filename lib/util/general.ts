@@ -11,32 +11,29 @@ import * as safe from "safe-regex"
  * @returns
  */
 export function containsObject(array: object[], object: object, field?: string) {
-  let deferred = Q.defer();
 
   if (!array || array.length == 0) {
-    deferred.resolve({ "result": false });
-    return deferred.promise;
+    return { "result": false, "element": {} };
   }
 
   if (!field) {
     array.forEach((el, index) => {
       if (JSON.stringify(el) === JSON.stringify(object)) {
-        deferred.resolve({ "result": true, "element": el });
+        return { "result": true, "element": el };
       } else if (index === array.length - 1) {
-        deferred.resolve({ "result": false });
+        return { "result": false, "element": {} };
       }
     })
   } else {
     array.forEach((el: object, index: number) => {
       if (el[field].toString() == object[field].toString()) {
-        deferred.resolve({ "result": true, "element": el });
+        return { "result": true, "element": el };
       } else if (index === array.length - 1) {
-        deferred.resolve({ "result": false });
+        return { "result": false, "element": {} };
       }
     })
   }
 
-  return deferred.promise;
 }
 
 /**
