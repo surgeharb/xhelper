@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Gets the last midnight timestamp according to the user date
  *
+ * @export
  * @param {number} hours - Hours
  * @param {number} minutes - Minutes
  * @param {number} seconds - Seconds
@@ -17,6 +18,7 @@ exports.getLastMidnight = getLastMidnight;
 /**
  * Gets the last midnight of the first day of the month's timestamp according to the user date
  *
+ * @export
  * @param {number} day - Day
  * @param {number} hours - Hours
  * @param {number} minutes - Minutes
@@ -33,6 +35,7 @@ exports.getCurrentMonthFirstDay = getCurrentMonthFirstDay;
 /**
  * Round number of seconds to the nearest greater number of minutes
  *
+ * @export
  * @param {number} seconds - Number of seconds
  * @returns
  */

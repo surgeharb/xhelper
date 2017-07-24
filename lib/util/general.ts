@@ -4,11 +4,11 @@ import * as safe from "safe-regex"
 /**
  * Checks if the array contains a certain object
  *
+ * @export
  * @param {array} array - Array where to search
  * @param {object} object - Object to be checked
  * @param {string} [field] - Field to be compared
- *
- * @return {promise}
+ * @returns
  */
 export function containsObject(array: object[], object: object, field?: string) {
   let deferred = Q.defer();
@@ -40,11 +40,68 @@ export function containsObject(array: object[], object: object, field?: string) 
 }
 
 /**
+ * Escape Regex input
+ * 
+ * @export
+ * @param {string} string - String to be escaped
+ * @returns 
+ */
+export function escapeRegex(string: string) {
+  return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
+/**
+ * Ceil the given number
+ * 
+ * @export
+ * @param {number} number - Number to be ceiled
+ * @param {number} [digits] - Number of fractional digits after the integer
+ */
+export function ceil(number: number, digits?: number) {
+  if (!digits) {
+    return Math.ceil(number);
+  }
+  let temp = Math.pow(10, digits);
+  return (Math.ceil(number * temp) / temp);
+}
+
+/**
+ * Floor the given number
+ * 
+ * @export
+ * @param {number} number - Number to be floored
+ * @param {number} [digits] - Number of fractional digits after the integer
+ */
+export function floor(number: number, digits?: number) {
+  if (!digits) {
+    return Math.floor(number);
+  }
+  let temp = Math.pow(10, digits);
+  return (Math.floor(number * temp) / temp);
+}
+
+/**
+ * Round the given number
+ * 
+ * @export
+ * @param {number} number - Number to be rounded
+ * @param {number} [digits] - Number of fractional digits after the integer
+ */
+export function round(number: number, digits?: number) {
+  if (!digits) {
+    return Math.round(number);
+  }
+  let temp = Math.pow(10, digits);
+  return (Math.round(number * temp) / temp);
+}
+
+/**
  * Truncate the given number
  *
+ * @export
  * @param {number} number - Number to be truncated
  * @param {number} [digits] - Number of fractional digits after the integer
- * @return 
+ * @returns 
  */
 export function truncate(number: number, digits?: number) {
   if (!digits) {
@@ -57,9 +114,10 @@ export function truncate(number: number, digits?: number) {
 /**
  * Remove spaces from the string
  *
+ * @export
  * @param {string} text - text to be unspaced
  * @param {string} [occurence] - all | edges | first | last | beautify
- * @return 
+ * @returns
  */
 export function unspace(text: string, occurence?: string) {
   if (!occurence) {
@@ -104,8 +162,9 @@ export function unspace(text: string, occurence?: string) {
 /**
  * Converts the string to boolean value
  *
+ * @export
  * @param {string} string
- * @return {boolean}
+ * @returns
  */
 export function toBoolean(string: string | boolean) {
   if (string === "true" || string == true) {
@@ -118,8 +177,9 @@ export function toBoolean(string: string | boolean) {
 /**
  * Checks if object is undefined
  *
+ * @export
  * @param {object} value
- * @return {boolean}
+ * @returns
  */
 export function isUndefined(value: object) {
   if (value === undefined) {
@@ -132,6 +192,7 @@ export function isUndefined(value: object) {
 /**
  * Checks if object is null
  *
+ * @export
  * @param {object} value
  * @returns
  */
@@ -145,7 +206,8 @@ export function isNull(value: object) {
 
 /**
  * Converts degree angle to radiant
- * 
+ *
+ * @export
  * @param {number} angle - Angle in degree 
  * @returns 
  */
@@ -155,7 +217,8 @@ export function deg2rad(angle: number) {
 
 /**
  * Validates the given email address
- * 
+ *
+ * @export
  * @param {string} email - Email Address 
  * @returns 
  */
@@ -167,12 +230,13 @@ export function validateEmail(email: string) {
 /**
  * Adds leading zeroes to the string untill it matches the given characters length
  *
- * @param {string} string
- * @param {number} characters
- * @return
+ * @export
+ * @param {string} string - String to be affected 
+ * @param {number} characters - Max characters to reach
+ * @returns
  */
 export function leadingZeroes(string: string, characters: number) {
-  if (string === undefined || string === null) return '';
+  if (!string) return '';
   let zeroes = string.length;
   var diff = characters - string.length;
   for (var i = 0; i < diff; i++) {
@@ -183,7 +247,8 @@ export function leadingZeroes(string: string, characters: number) {
 
 /**
  * Adds commas to the number at thousands, millions, ...
- * 
+ *
+ * @export
  * @param {string} number - number to be modified
  * @returns 
  */

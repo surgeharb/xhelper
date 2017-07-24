@@ -1,6 +1,7 @@
 /**
  * Gets the last midnight timestamp according to the user date
  *
+ * @export
  * @param {number} hours - Hours
  * @param {number} minutes - Minutes
  * @param {number} seconds - Seconds
@@ -10,6 +11,7 @@ export declare function getLastMidnight(hours: number, minutes: number, seconds:
 /**
  * Gets the last midnight of the first day of the month's timestamp according to the user date
  *
+ * @export
  * @param {number} day - Day
  * @param {number} hours - Hours
  * @param {number} minutes - Minutes
@@ -20,6 +22,7 @@ export declare function getCurrentMonthFirstDay(day: number, hours: number, minu
 /**
  * Round number of seconds to the nearest greater number of minutes
  *
+ * @export
  * @param {number} seconds - Number of seconds
  * @returns
  */
