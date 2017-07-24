@@ -15,6 +15,8 @@ const xhelper = require('xhelper');
 <script src="./node_modules/xhelper/xhelper.min.js"></script>
 ```
 
+### Functions Documentation
+
 | Function Name  | Description |
 | ---------------|-------------|
 | containsObject | Checks if the array contains a certain object|
