@@ -5,4 +5,4 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./util/date"));
 __export(require("./util/general"));
-__export(require("./util/logs"));
+__export(require("./util/system"));

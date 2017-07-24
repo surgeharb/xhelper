@@ -20,6 +20,6 @@
     "./lib/index.ts",
     "./lib/util/date.ts",
     "./lib/util/general.ts",
-    "./lib/util/logs.ts"
+    "./lib/util/system.ts"
   ]
 }

@@ -1,5 +1,3 @@
-import * as safe from "safe-regex"
-
 /**
  * Checks if the array contains a certain object
  *
@@ -124,9 +122,7 @@ export function unspace(text: string, occurence?: string) {
     occurence = 'all';
   }
 
-  if (!safe(text)) {
-    return text;
-  }
+  text = escapeRegex(text);
 
   let regex = {
     'all': /\s/g,

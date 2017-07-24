@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var safe = require("safe-regex");
 /**
  * Checks if the array contains a certain object
  *
@@ -122,9 +121,7 @@ function unspace(text, occurence) {
     if (!occurence) {
         occurence = 'all';
     }
-    if (!safe(text)) {
-        return text;
-    }
+    text = escapeRegex(text);
     var regex = {
         'all': /\s/g,
         'edges': /^\s*|\s*$/g,
