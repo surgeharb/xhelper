@@ -36,7 +36,7 @@
   }
 
   // Current version.
-  xhelper.VERSION = '2.0.0';
+  xhelper.VERSION = '2.0.2';
 
   /**
    * Checks if the array contains a certain object
@@ -273,7 +273,6 @@
   /**
    * Gets the last midnight timestamp according to the user date
    *
-   * @export
    * @param {number} hours Hours
    * @param {number} minutes Minutes
    * @param {number} seconds Seconds
@@ -304,13 +303,46 @@
   /**
    * Round number of seconds to the nearest greater number of minutes
    *
-   * @export
    * @param {number} seconds Number of seconds
    * @returns
    */
   xhelper.ceilToMinute = function (seconds) {
     var minutes = seconds / 60;
     return Math.ceil(minutes);
+  }
+
+  /**
+   * Get Random elements from an array (duplicates are allowed)
+   * 
+   * @param {array} array Array of elements 
+   * @param {number} count Number of result elements
+   * @returns
+   */
+  xhelper.getRandomElements = function (array, count) {
+    var resultArray = [];
+    for (var index = 0; index < count; index++) {
+      resultArray.push(array[Math.floor(Math.random() * array.length)]);
+    }
+    return resultArray;
+  }
+
+  /**
+   * Get Random unique elements from an array
+   * 
+   * @param {array} array Array of elements 
+   * @param {number} count Number of result elements
+   * @returns
+   */
+  xhelper.getUniqueElements = function (array, count) {
+    var tmp = array.slice(array);
+    var resultArray = [];
+
+    for (var i = 0; i < count; i++) {
+      var index = Math.floor(Math.random() * tmp.length);
+      var removed = tmp.splice(index, 1);
+      resultArray.push(removed[0]);
+    }
+    return resultArray;
   }
 
   // AMD registration happens at the end for compatibility with AMD loaders

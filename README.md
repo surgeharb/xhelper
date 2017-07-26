@@ -36,3 +36,5 @@ const xhelper = require('xhelper');
 | getLastMidnight | Gets the last midnight timestamp according to the user date |
 | getCurrentMonthFirstDay | Gets the last midnight of the first day of the month's timestamp according to the user date |
 | ceilToMinute | Round number of seconds to the nearest greater number of minutes |
+| getRandomElements | Get Random elements from an array (duplicates are allowed) |
+| getUniqueElements | Get Random unique elements from an array |

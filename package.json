@@ -1,6 +1,6 @@
 {
   "name": "xhelper",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "JavaScript helper library",
   "keywords": [
     "util",
@@ -12,8 +12,7 @@
   "main": "xhelper.js",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
