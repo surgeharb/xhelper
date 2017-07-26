@@ -337,7 +337,7 @@
     var tmp = array.slice(array);
     var resultArray = [];
 
-    for (var i = 0; i < count; i++) {
+    for (var i = 0; (i < count && i < array.length); i++) {
       var index = Math.floor(Math.random() * tmp.length);
       var removed = tmp.splice(index, 1);
       resultArray.push(removed[0]);
