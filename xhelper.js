@@ -36,7 +36,7 @@
   }
 
   // Current version.
-  xhelper.VERSION = '2.0.2';
+  xhelper.VERSION = '2.0.4';
 
   /**
    * Checks if the array contains a certain object
@@ -151,7 +151,6 @@
       occurence = 'all';
     }
 
-    text = xhelper.escapeRegex(text);
     var regex = {
       'all': /\s/g,
       'edges': /^\s*|\s*$/g,
