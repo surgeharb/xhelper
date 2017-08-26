@@ -36,7 +36,7 @@
   }
 
   // Current version.
-  xhelper.VERSION = '2.0.4';
+  xhelper.VERSION = '2.0.5';
 
   /**
    * Checks if the array contains a certain object
@@ -174,6 +174,26 @@
       default:
         return text.replace(regex.all, "");
     }
+  }
+
+  /**
+   * Generate a slug (url friendly string)
+   * 
+   * @param {string} text Target text title
+   * @param {string} [delimeter] Replacing spaces
+   * @returns 
+   */
+  xhelper.generateSlug = function (text, delimeter) {
+    var slug = '';
+    var delimeter = delimeter || '-';
+    var spacesExp = new RegExp(/\s+/, 'gi');
+    var allowedCharacters = /[^A-Za-z0-9-_]/;
+    var regexp = new RegExp(allowedCharacters, 'gi');
+  
+    slug = text.replace(spacesExp, delimeter);
+    slug = slug.replace(regexp, '');
+  
+    return slug;
   }
 
   /**
