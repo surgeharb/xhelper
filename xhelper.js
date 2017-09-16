@@ -36,7 +36,7 @@
   }
 
   // Current version.
-  xhelper.VERSION = '2.0.5';
+  xhelper.VERSION = '2.0.6';
 
   /**
    * Checks if the array contains a certain object
@@ -194,6 +194,30 @@
     slug = slug.replace(regexp, '');
   
     return slug;
+  }
+  
+  /**
+   * Copy object fields to another object
+   * 
+   * @param {object} src Source object
+   * @param {object} dest Target object
+   * @param {array} [fields] Fields to copy
+   * @returns 
+   */
+  xhelper.objectCopy = function (src, dest, fields) {
+    if (typeof src !== 'object') return {};
+    if (typeof dest !== 'object') dest = {};
+    if (fields && !Array.isArray(fields)) fields = [];
+    if (!fields) {
+      for (var prop in src) {
+        dest[prop] = src[prop];
+      }
+    } else {
+      fields.forEach(function(field) {
+        dest[field] = src[field];
+      });
+    }
+    return dest;
   }
 
   /**
