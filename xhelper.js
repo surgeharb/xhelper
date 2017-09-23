@@ -35,8 +35,37 @@
     root.xhelper = xhelper;
   }
 
+  /**
+   * Performs a binary search on the host array.
+   *
+   * @param {*} searchElement The item to search for within the array.
+   * @return {Number} The index of the element which defaults to -1 when not found.
+   */
+  Array.prototype.binaryIndexOf = function (searchElement) {
+
+    var minIndex = 0;
+    var maxIndex = this.length - 1;
+    var currentIndex;
+    var currentElement;
+
+    while (minIndex <= maxIndex) {
+      currentIndex = (minIndex + maxIndex) / 2 | 0;
+      currentElement = this[currentIndex];
+
+      if (currentElement < searchElement) {
+        minIndex = currentIndex + 1;
+      } else if (currentElement > searchElement) {
+        maxIndex = currentIndex - 1;
+      } else {
+        return currentIndex;
+      }
+    }
+
+    return -1;
+  }
+
   // Current version.
-  xhelper.VERSION = '2.0.6';
+  xhelper.VERSION = '2.0.7';
 
   /**
    * Checks if the array contains a certain object
@@ -189,13 +218,13 @@
     var spacesExp = new RegExp(/\s+/, 'gi');
     var allowedCharacters = /[^A-Za-z0-9-_]/;
     var regexp = new RegExp(allowedCharacters, 'gi');
-  
+
     slug = text.replace(spacesExp, delimeter);
     slug = slug.replace(regexp, '');
-  
+
     return slug;
   }
-  
+
   /**
    * Copy object fields to another object
    * 
@@ -213,7 +242,7 @@
         dest[prop] = src[prop];
       }
     } else {
-      fields.forEach(function(field) {
+      fields.forEach(function (field) {
         dest[field] = src[field];
       });
     }
@@ -380,12 +409,48 @@
     var tmp = array.slice(array);
     var resultArray = [];
 
-    for (var i = 0; (i < count && i < array.length); i++) {
+    for (var i = 0;
+      (i < count && i < array.length); i++) {
       var index = Math.floor(Math.random() * tmp.length);
       var removed = tmp.splice(index, 1);
       resultArray.push(removed[0]);
     }
     return resultArray;
+  }
+
+  /**
+   * Counts and returns common elements between two arrays
+   *
+   * @param {array} array1 First Array
+   * @param {array} array2 Second Array
+   * @param {boolean} [sorted] If array2 is sorted (optimization)
+   * @returns
+   */
+  xhelper.getMatches = function (array1, array2, sorted) {
+    var result = {
+      'count': 0,
+      'elements': []
+    }
+
+    if (sorted) {
+      array1.forEach(function (element) {
+        var index = array2.binaryIndexOf(element);
+        if (index >= 0) {
+          result.elements.push(element);
+          result.count++;          
+        }
+      }, this);
+    } else {
+      array1.forEach(function (element) {
+        var index = array2.indexOf(element);
+        if (index >= 0) {
+          result.elements.push(element);
+          result.count++;          
+        }
+      }, this);
+    }
+
+    return result;
   }
 
   // AMD registration happens at the end for compatibility with AMD loaders
