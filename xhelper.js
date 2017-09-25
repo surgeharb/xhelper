@@ -65,7 +65,7 @@
   }
 
   // Current version.
-  xhelper.VERSION = '2.0.7';
+  xhelper.VERSION = '2.0.9';
 
   /**
    * Checks if the array contains a certain object
@@ -419,7 +419,7 @@
   }
 
   /**
-   * Counts and returns common elements between two arrays
+   * Returns common elements between two arrays
    *
    * @param {array} array1 First Array
    * @param {array} array2 Second Array
@@ -427,30 +427,22 @@
    * @returns
    */
   xhelper.getMatches = function (array1, array2, sorted) {
-    var result = {
-      'count': 0,
-      'elements': []
-    }
+    var elements = [];
 
     if (sorted) {
-      array1.forEach(function (element) {
-        var index = array2.binaryIndexOf(element);
-        if (index >= 0) {
-          result.elements.push(element);
-          result.count++;          
-        }
-      }, this);
+      var indexOf = 'binaryIndexOf';
     } else {
-      array1.forEach(function (element) {
-        var index = array2.indexOf(element);
-        if (index >= 0) {
-          result.elements.push(element);
-          result.count++;          
-        }
-      }, this);
+      var indexOf = 'indexOf';
     }
 
-    return result;
+    array1.forEach(function (element) {
+      var index = array2[indexOf](element);
+      if (index >= 0) {
+        elements.push(element);
+      }
+    }, this);
+
+    return elements;
   }
 
   // AMD registration happens at the end for compatibility with AMD loaders
