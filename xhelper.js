@@ -65,7 +65,7 @@
   }
 
   // Current version.
-  xhelper.VERSION = '2.0.9';
+  xhelper.VERSION = '2.1.0';
 
   /**
    * Checks if the array contains a certain object
@@ -381,6 +381,17 @@
   xhelper.ceilToMinute = function (seconds) {
     var minutes = seconds / 60;
     return Math.ceil(minutes);
+  }
+
+  /**
+   * Round number of seconds to the nearest lowest number of minutes
+   *
+   * @param {number} seconds Number of seconds
+   * @returns
+   */
+  xhelper.floorToMinute = function (seconds) {
+    var minutes = seconds / 60;
+    return Math.floor(minutes);
   }
 
   /**
