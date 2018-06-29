@@ -65,7 +65,7 @@
   }
 
   // Current version.
-  xhelper.VERSION = '2.1.0';
+  xhelper.VERSION = '2.2.0';
 
   /**
    * Checks if the array contains a certain object
@@ -156,6 +156,16 @@
     }
     var temp = Math.pow(10, digits);
     return (Math.trunc(number * temp) / temp);
+  }
+
+  /**
+   * parseFloat by replacing commas by dots
+   * 
+   * @param {string} numString 
+   */
+  xhelper.parseFloat = function (numString) {
+    numString += '';
+    return parseFloat(numString.replace(',', '.').replace(' ', ''));
   }
 
   /**
